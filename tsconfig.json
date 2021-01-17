@@ -5,11 +5,7 @@
     "module": "esnext",
     "target": "es6",
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -21,17 +17,9 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@components/*": [
-        "components/*"
-      ]
+      "@components/*": ["components/*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
