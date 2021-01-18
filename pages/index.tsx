@@ -9,6 +9,7 @@ import TextInput from "@components/atoms/TextInput";
 import Progress from "@components/atoms/Progress";
 import Icon from "@components/atoms/Icon";
 import Box from "@components/atoms/Box";
+import Chip from "@components/atoms/Chip";
 import Toggle from "@components/atoms/Toggle";
 import ButtonGroup from "@components/molecules/ButtonGroup";
 import Banners from "@components/molecules/Banners";
@@ -17,7 +18,15 @@ import CheckboxAndLabel from "@components/molecules/CheckboxAndLabel";
 import RadioButtonAndLabel from "@components/molecules/RadioButtonAndLabel";
 import SearchBar from "@components/molecules/SearchBar";
 import Breadcrumbs from "@components/molecules/Breadcrumbs";
+import Selectbox from "@components/molecules/Selectbox";
+import DatePicker from "@components/molecules/DatePicker";
+import TimePicker from "@components/molecules/TimePicker";
+import FileUpload from "@components/molecules/FileUpload";
+import Tooltip from "@components/molecules/Tooltip";
+import Pagination from "@components/molecules/Pagination";
+import Table from "@components/molecules/Table";
 import CheckboxList from "@components/organisms/CheckboxList";
+import DateTimePicker from "@components/organisms/DateTimePicker";
 
 const items = {
   atoms: [
@@ -51,7 +60,7 @@ const items = {
     },
     {
       component: TextInput,
-      name: "Text Input",
+      name: "Input",
     },
     {
       component: Progress,
@@ -64,6 +73,10 @@ const items = {
     {
       component: Toggle,
       name: "Toggle",
+    },
+    {
+      component: Chip,
+      name: "Chip",
     },
   ],
   molecules: [
@@ -94,7 +107,7 @@ const items = {
     },
     {
       component: SearchBar,
-      name: "Search Bar",
+      name: "Search bar",
       use: ["Text Input", "Text", "Icon"],
     },
     {
@@ -102,12 +115,52 @@ const items = {
       name: "Breadcrumbs",
       use: ["Text", "Icon"],
     },
+    {
+      component: Selectbox,
+      name: "Select box",
+      use: ["Text", "Input"],
+    },
+    {
+      component: DatePicker,
+      name: "Date Picker",
+      use: ["Text", "Input", "Icon"],
+    },
+    {
+      component: TimePicker,
+      name: "Time Picker",
+      use: ["Text", "Input", "Icon"],
+    },
+    {
+      component: FileUpload,
+      name: "File Upload",
+      use: ["Button", "Input", "Icon"],
+    },
+    {
+      component: Tooltip,
+      name: "Tooltip",
+      use: ["Text", "Chip"],
+    },
+    {
+      component: Pagination,
+      name: "Pagination",
+      use: ["Button"],
+    },
+    {
+      component: Table,
+      name: "Table",
+      use: ["Text", "Box"],
+    },
   ],
   organisms: [
     {
       component: CheckboxList,
       name: "Checkbox List",
       use: ["Text", "Checkbox"],
+    },
+    {
+      component: DateTimePicker,
+      name: "DateTime Picker",
+      use: ["Date Picker", "Time Picker"],
     },
   ],
 };
@@ -123,9 +176,9 @@ const Index = () => {
 
         <h1 className="text-3xl font-bold">Atoms</h1>
 
-        <div className="py-4  flex flex-wrap">
+        <div className="py-4 flex flex-wrap justify-center md:justify-start">
           {items.atoms.map((v, i) => (
-            <Card name={v.name} key={i}>
+            <Card name={v.name} use={[]} key={i}>
               <v.component />
             </Card>
           ))}
@@ -135,7 +188,7 @@ const Index = () => {
 
         <div className="py-4 flex flex-wrap">
           {items.molecules.map((v, i) => (
-            <Card name={v.name} key={i}>
+            <Card name={v.name} use={v.use} key={i}>
               <v.component />
             </Card>
           ))}
@@ -145,7 +198,7 @@ const Index = () => {
 
         <div className="py-4 flex flex-wrap">
           {items.organisms.map((v, i) => (
-            <Card name={v.name} key={i}>
+            <Card name={v.name} use={v.use} key={i}>
               <v.component />
             </Card>
           ))}
