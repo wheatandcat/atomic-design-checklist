@@ -25,9 +25,11 @@ import FileUpload from "@components/molecules/FileUpload";
 import Tooltip from "@components/molecules/Tooltip";
 import Pagination from "@components/molecules/Pagination";
 import Table from "@components/molecules/Table";
+import SimpleCard from "@components/molecules/SimpleCard";
+import SimpleForm from "@components/molecules/SimpleForm";
 import CheckboxList from "@components/organisms/CheckboxList";
 import DateTimePicker from "@components/organisms/DateTimePicker";
-
+import Form from "@components/organisms/Form";
 const items = {
   atoms: [
     {
@@ -150,6 +152,16 @@ const items = {
       name: "Table",
       use: ["Text", "Box"],
     },
+    {
+      component: SimpleCard,
+      name: "Card",
+      use: ["Text", "Box", "Image"],
+    },
+    {
+      component: SimpleForm,
+      name: "Simple Input Form",
+      use: ["Input", "Button"],
+    },
   ],
   organisms: [
     {
@@ -161,6 +173,11 @@ const items = {
       component: DateTimePicker,
       name: "DateTime Picker",
       use: ["Date Picker", "Time Picker"],
+    },
+    {
+      component: Form,
+      name: "Input Form",
+      use: ["Input", "Button", "Checkbox"],
     },
   ],
 };
