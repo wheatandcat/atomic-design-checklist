@@ -27,9 +27,12 @@ import Pagination from "@components/molecules/Pagination";
 import Table from "@components/molecules/Table";
 import SimpleCard from "@components/molecules/SimpleCard";
 import SimpleForm from "@components/molecules/SimpleForm";
+import Modal from "@components/molecules/Modal";
+import ListItem from "@components/molecules/ListItem";
 import CheckboxList from "@components/organisms/CheckboxList";
 import DateTimePicker from "@components/organisms/DateTimePicker";
 import Form from "@components/organisms/Form";
+
 const items = {
   atoms: [
     {
@@ -150,17 +153,27 @@ const items = {
     {
       component: Table,
       name: "Table",
-      use: ["Text", "Box"],
+      use: ["Text", "Box", "Divider"],
     },
     {
       component: SimpleCard,
       name: "Card",
-      use: ["Text", "Box", "Image"],
+      use: ["Text", "Box", "Image", "Divider"],
     },
     {
       component: SimpleForm,
       name: "Simple Input Form",
       use: ["Input", "Button"],
+    },
+    {
+      component: Modal,
+      name: "Modal",
+      use: ["Box", "Text", "Button"],
+    },
+    {
+      component: ListItem,
+      name: "List Item",
+      use: ["Text", "Box", "Divider"],
     },
   ],
   organisms: [
