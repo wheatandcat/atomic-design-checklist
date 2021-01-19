@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
 import Card from "@components/molecules/Card";
 import Text from "@components/atoms/Text";
 import Img from "@components/atoms/Image";
@@ -232,45 +235,72 @@ const items = {
 };
 
 const Index = () => {
+  const [search, setSearch] = useState("");
+
   return (
-    <div className="container mx-auto px-4">
-      <div className="hero">
-        <h1 className="title">Atomic Design Check List</h1>
-        <p className="text-center text-teal-500 text-2xl py-4">
-          This is an Example.
-        </p>
+    <>
+      <Head>
+        <title>Atomic Design Check List</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div className="container mx-auto px-4">
+        <div className="hero">
+          <h1 className="title">Atomic Design Check List</h1>
+          <div className="flex items-center justify-center w-full py-8">
+            <div className="mx-2 pt-2 relative text-gray-600">
+              <input
+                className="border-2 border-gray-300 bg-white h-10 px-3 w-72 rounded-lg text-base font-bold focus:outline-none"
+                type="search"
+                name="search"
+                placeholder="Search"
+                onChange={(e) => setSearch(e?.target?.value || "")}
+              />
+              {!search && (
+                <button className="absolute left-64 top-0 mt-4">
+                  <Image src="/image/search.svg" width={25} height={25} />
+                </button>
+              )}
+            </div>
+          </div>
 
-        <h1 className="text-3xl font-bold">Atoms</h1>
+          <h1 className="text-3xl font-bold">Atoms</h1>
 
-        <div className="py-4 flex flex-wrap justify-center md:justify-start">
-          {items.atoms.map((v, i) => (
-            <Card name={v.name} use={[]} w="64" h="64" key={i}>
-              <v.component />
-            </Card>
-          ))}
-        </div>
+          <div className="py-4 flex flex-wrap justify-center md:justify-start">
+            {items.atoms
+              .filter((v) => v.name.includes(search))
+              .map((v, i) => (
+                <Card name={v.name} use={[]} w="64" h="64" key={i}>
+                  <v.component />
+                </Card>
+              ))}
+          </div>
 
-        <h1 className="text-3xl font-bold pt-8">Molecule</h1>
+          <h1 className="text-3xl font-bold pt-8">Molecule</h1>
 
-        <div className="py-4 flex flex-wrap justify-center md:justify-start">
-          {items.molecules.map((v, i) => (
-            <Card name={v.name} use={v.use} w="64" h="64" key={i}>
-              <v.component />
-            </Card>
-          ))}
-        </div>
+          <div className="py-4 flex flex-wrap justify-center md:justify-start">
+            {items.molecules
+              .filter((v) => v.name.includes(search))
+              .map((v, i) => (
+                <Card name={v.name} use={v.use} w="64" h="64" key={i}>
+                  <v.component />
+                </Card>
+              ))}
+          </div>
 
-        <h1 className="text-3xl font-bold pt-8">Organism</h1>
+          <h1 className="text-3xl font-bold pt-8">Organism</h1>
 
-        <div className="py-4 flex flex-wrap justify-center md:justify-start">
-          {items.organisms.map((v, i) => (
-            <Card name={v.name} use={v.use} w="96" h="96" key={i}>
-              <v.component />
-            </Card>
-          ))}
+          <div className="py-4 flex flex-wrap justify-center md:justify-start">
+            {items.organisms
+              .filter((v) => v.name.includes(search))
+              .map((v, i) => (
+                <Card name={v.name} use={v.use} w="96" h="96" key={i}>
+                  <v.component />
+                </Card>
+              ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
