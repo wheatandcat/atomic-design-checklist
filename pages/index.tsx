@@ -28,10 +28,16 @@ import Table from "@components/molecules/Table";
 import SimpleCard from "@components/molecules/SimpleCard";
 import SimpleForm from "@components/molecules/SimpleForm";
 import Modal from "@components/molecules/Modal";
+import ButtonAndModal from "@components/organisms/ButtonAndModal";
 import ListItem from "@components/molecules/ListItem";
+import Tabs from "@components/molecules/Tabs";
 import CheckboxList from "@components/organisms/CheckboxList";
 import DateTimePicker from "@components/organisms/DateTimePicker";
 import Form from "@components/organisms/Form";
+import OverflowMenu from "@components/organisms/Menu";
+import TabItems from "@components/organisms/TabItems";
+import Cards from "@components/organisms/Cards";
+import AppBar from "@components/organisms/AppBar";
 
 const items = {
   atoms: [
@@ -166,14 +172,19 @@ const items = {
       use: ["Input", "Button"],
     },
     {
-      component: Modal,
-      name: "Modal",
-      use: ["Box", "Text", "Button"],
-    },
-    {
       component: ListItem,
       name: "List Item",
       use: ["Text", "Box", "Divider"],
+    },
+    {
+      component: Modal,
+      name: "Modal",
+      use: ["Text", "Box", "Divider"],
+    },
+    {
+      component: Tabs,
+      name: "Tabs",
+      use: ["Button", "Divider"],
     },
   ],
   organisms: [
@@ -190,7 +201,32 @@ const items = {
     {
       component: Form,
       name: "Input Form",
-      use: ["Input", "Button", "Checkbox"],
+      use: ["Box", "Input", "Button", "Checkbox & Label"],
+    },
+    {
+      component: ButtonAndModal,
+      name: "Button & Modal",
+      use: ["Modal", "Button"],
+    },
+    {
+      component: OverflowMenu,
+      name: "Overflow Menu",
+      use: ["List Item", "Button", "Icon"],
+    },
+    {
+      component: TabItems,
+      name: "Tab Contents",
+      use: ["Tabs", "Box", "Text"],
+    },
+    {
+      component: Cards,
+      name: "Card list",
+      use: ["Card"],
+    },
+    {
+      component: AppBar,
+      name: "App bar",
+      use: ["Search bar", "Text", "Button"],
     },
   ],
 };
@@ -208,7 +244,7 @@ const Index = () => {
 
         <div className="py-4 flex flex-wrap justify-center md:justify-start">
           {items.atoms.map((v, i) => (
-            <Card name={v.name} use={[]} key={i}>
+            <Card name={v.name} use={[]} w="64" h="64" key={i}>
               <v.component />
             </Card>
           ))}
@@ -216,9 +252,9 @@ const Index = () => {
 
         <h1 className="text-3xl font-bold pt-8">Molecule</h1>
 
-        <div className="py-4 flex flex-wrap">
+        <div className="py-4 flex flex-wrap justify-center md:justify-start">
           {items.molecules.map((v, i) => (
-            <Card name={v.name} use={v.use} key={i}>
+            <Card name={v.name} use={v.use} w="64" h="64" key={i}>
               <v.component />
             </Card>
           ))}
@@ -226,9 +262,9 @@ const Index = () => {
 
         <h1 className="text-3xl font-bold pt-8">Organism</h1>
 
-        <div className="py-4 flex flex-wrap">
+        <div className="py-4 flex flex-wrap justify-center md:justify-start">
           {items.organisms.map((v, i) => (
-            <Card name={v.name} use={v.use} key={i}>
+            <Card name={v.name} use={v.use} w="96" h="96" key={i}>
               <v.component />
             </Card>
           ))}

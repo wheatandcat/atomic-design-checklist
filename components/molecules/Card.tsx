@@ -4,6 +4,8 @@ import Image from "next/image";
 type Props = {
   name: string;
   use: string[];
+  w: string;
+  h: string;
 };
 
 const Card: React.FC<Props> = (props) => {
@@ -11,7 +13,7 @@ const Card: React.FC<Props> = (props) => {
 
   return (
     <div
-      className="group box-border h-60 w-64 border-2 hover:shadow-lg rounded-xl m-3 bg-white"
+      className={`group box-border h-${props.h} w-${props.w} border-2 hover:shadow-lg rounded-xl m-3 bg-white`}
       onClick={() => {
         if (tooltip) {
           setTooltip(false);
