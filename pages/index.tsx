@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import Card from "@components/molecules/Card";
@@ -243,16 +244,40 @@ const Index = () => {
         <title>Atomic Design Check List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="container mx-auto px-4">
-        <div className="hero">
-          <h1 className="title">Atomic Design Check List</h1>
+      <div className="h-12 py-3 px-2  border border-indigo-200 flex items-center justify-end">
+        <div className="mr-2">
+          <Link href="https://github.com/wheatandcat/atomic-design-checklist">
+            <div className="hover:bg-blue-200 rounded-full px-2 py-1 cursor-pointer">
+              <Image src="/image/gitHub-mark.png" width={25} height={25} />
+            </div>
+          </Link>
+        </div>
+        <div className="flex font-bold hover:bg-blue-200 px-2 cursor-pointer">
+          <Link href="/about">
+            <div className="text-lg pt-0.5">about</div>
+          </Link>
+          <Link href="/about">
+            <Image
+              src="/image/keyboard_arrow_right.svg"
+              className="pt-4"
+              width={25}
+              height={25}
+            />
+          </Link>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 pt-4">
+        <div>
+          <h1 className="title font-bold">Atomic Design Check List</h1>
+
           <div className="flex items-center justify-center w-full py-8">
             <div className="mx-2 pt-2 relative text-gray-600">
               <input
                 className="border-2 border-gray-300 bg-white h-10 px-3 w-72 rounded-lg text-base font-bold focus:outline-none"
                 type="search"
                 name="search"
-                placeholder="Search"
+                placeholder="Search components"
                 onChange={(e) => setSearch(e?.target?.value || "")}
               />
               {!search && (
