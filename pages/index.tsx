@@ -40,7 +40,7 @@ import Form from "@components/organisms/Form";
 import OverflowMenu from "@components/organisms/Menu";
 import TabItems from "@components/organisms/TabItems";
 import Cards from "@components/organisms/Cards";
-import AppBar from "@components/organisms/AppBar";
+import AppBar from "@components/organisms/Appbar";
 
 const items = {
   atoms: [
