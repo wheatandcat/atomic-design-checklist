@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
-import Card from "@components/molecules/Card";
+import Card from "@components/organisms/ComponentCard";
 import Text from "@components/atoms/Text";
 import Img from "@components/atoms/Image";
 import Button from "@components/atoms/Button";
@@ -43,7 +43,19 @@ import TabItems from "@components/organisms/TabItems";
 import Cards from "@components/organisms/Cards";
 import AppBar from "@components/organisms/Appbar";
 
-const items = {
+type Items = {
+  atoms: Item[];
+  molecules: Item[];
+  organisms: Item[];
+};
+
+type Item = {
+  component: (props: any) => JSX.Element;
+  name: string;
+  use?: string[];
+};
+
+const items: Items = {
   atoms: [
     {
       component: Text,
@@ -55,7 +67,7 @@ const items = {
     },
     {
       component: Button,
-      name: "Button",
+      name: "Simple Button",
     },
     {
       component: Icon,
@@ -98,12 +110,12 @@ const items = {
     {
       component: ButtonGroup,
       name: "Button Group",
-      use: ["Button"],
+      use: ["Simple Button"],
     },
     {
       component: Banners,
       name: "Banners",
-      use: ["Text", "Box", "Button"],
+      use: ["Text", "Box", "Simple Button"],
     },
     {
       component: Accordion,
@@ -148,7 +160,7 @@ const items = {
     {
       component: FileUpload,
       name: "File Upload",
-      use: ["Button", "Input", "Icon"],
+      use: ["Simple Button", "Input", "Icon"],
     },
     {
       component: Tooltip,
@@ -158,7 +170,7 @@ const items = {
     {
       component: Pagination,
       name: "Pagination",
-      use: ["Button"],
+      use: ["Simple Button"],
     },
     {
       component: Table,
@@ -173,7 +185,7 @@ const items = {
     {
       component: SimpleForm,
       name: "Simple Input Form",
-      use: ["Input", "Button"],
+      use: ["Input", "Simple Button"],
     },
     {
       component: ListItem,
@@ -183,12 +195,12 @@ const items = {
     {
       component: Modal,
       name: "Modal",
-      use: ["Text", "Box", "Divider"],
+      use: ["Text", "Box", "Divider", "Simple Button"],
     },
     {
       component: Tabs,
       name: "Tabs",
-      use: ["Button", "Divider"],
+      use: ["Simple Button", "Divider"],
     },
   ],
   organisms: [
@@ -205,17 +217,17 @@ const items = {
     {
       component: Form,
       name: "Input Form",
-      use: ["Box", "Input", "Button", "Checkbox & Label"],
+      use: ["Box", "Input", "Simple Button", "Checkbox & Label"],
     },
     {
       component: ButtonAndModal,
       name: "Button & Modal",
-      use: ["Modal", "Button"],
+      use: ["Modal", "Simple Button"],
     },
     {
       component: OverflowMenu,
       name: "Overflow Menu",
-      use: ["List Item", "Button", "Icon"],
+      use: ["List Item", "Simple Button", "Icon"],
     },
     {
       component: TabItems,
@@ -230,13 +242,37 @@ const items = {
     {
       component: AppBar,
       name: "App bar",
-      use: ["Search bar", "Text", "Button"],
+      use: ["Search bar", "Text", "Simple Button"],
     },
   ],
 };
 
+const searchComponents = (target: Item[], text: string) => {
+  const list = text.split(",");
+
+  const data = list.map((v1) => {
+    return target.filter((v2) => v2.name.includes(v1));
+  });
+
+  const result = data.reduce((prev, current) => {
+    return [...prev, ...current];
+  }, []);
+
+  return result.filter((v1, i1, a1) => {
+    return (
+      a1.findIndex(function (v2) {
+        return v1.name === v2.name;
+      }) === i1
+    );
+  });
+};
+
 const Index = () => {
   const [search, setSearch] = useState("");
+
+  const atoms = searchComponents(items.atoms, search);
+  const molecules = searchComponents(items.molecules, search);
+  const organisms = searchComponents(items.organisms, search);
 
   return (
     <>
@@ -279,6 +315,7 @@ const Index = () => {
                 name="search"
                 placeholder="Search components"
                 onChange={(e) => setSearch(e?.target?.value || "")}
+                value={search}
               />
               {!search && (
                 <button className="absolute left-64 top-0 mt-4">
@@ -291,37 +328,52 @@ const Index = () => {
           <h1 className="text-3xl font-bold">Atoms</h1>
 
           <div className="py-4 flex flex-wrap justify-center md:justify-start">
-            {items.atoms
-              .filter((v) => v.name.includes(search))
-              .map((v, i) => (
-                <Card name={v.name} use={[]} w="64" h="64" key={i}>
-                  <v.component />
-                </Card>
-              ))}
+            {atoms.map((v, i) => (
+              <Card
+                name={v.name}
+                use={[]}
+                w="64"
+                h="64"
+                setSearch={setSearch}
+                key={i}
+              >
+                <v.component />
+              </Card>
+            ))}
           </div>
 
           <h1 className="text-3xl font-bold pt-8">Molecule</h1>
 
           <div className="py-4 flex flex-wrap justify-center md:justify-start">
-            {items.molecules
-              .filter((v) => v.name.includes(search))
-              .map((v, i) => (
-                <Card name={v.name} use={v.use} w="64" h="64" key={i}>
-                  <v.component />
-                </Card>
-              ))}
+            {molecules.map((v, i) => (
+              <Card
+                name={v.name}
+                use={v.use}
+                w="64"
+                h="64"
+                setSearch={setSearch}
+                key={i}
+              >
+                <v.component />
+              </Card>
+            ))}
           </div>
 
           <h1 className="text-3xl font-bold pt-8">Organism</h1>
 
           <div className="py-4 flex flex-wrap justify-center md:justify-start">
-            {items.organisms
-              .filter((v) => v.name.includes(search))
-              .map((v, i) => (
-                <Card name={v.name} use={v.use} w="96" h="96" key={i}>
-                  <v.component />
-                </Card>
-              ))}
+            {organisms.map((v, i) => (
+              <Card
+                name={v.name}
+                use={v.use}
+                w="96"
+                h="96"
+                setSearch={setSearch}
+                key={i}
+              >
+                <v.component />
+              </Card>
+            ))}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ type Props = {
   use: string[];
   w: string;
   h: string;
+  setSearch: (text: string) => void;
 };
 
 const Card: React.FC<Props> = (props) => {
@@ -34,7 +35,16 @@ const Card: React.FC<Props> = (props) => {
             <Image src="/image/link.svg" width={16} height={16} />
             {tooltip && (
               <div className="w-40 border-2 border-gray-400 bg-gray-200 rounded-lg py-3 absolute z-10 bottom-full pointer-events-none">
-                <p className="text-sm px-3 pb-2">■ dependence</p>
+                <div className="text-sm px-3 pb-2 text-blue-500 font-bold border-blue-500 underline cursor-pointer pointer-events-auto">
+                  <span
+                    className="hover:bg-blue-200"
+                    onClick={() =>
+                      props.setSearch([...props.use, props.name].join(","))
+                    }
+                  >
+                    ■ Dependence
+                  </span>
+                </div>
                 <div className="border border-gray-300 w-full mb-2" />
 
                 {props.use.map((v) => (
