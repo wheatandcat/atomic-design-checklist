@@ -308,7 +308,7 @@ const Index = () => {
         <title>Atomic Design Check List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="h-12 py-3 px-2  border border-indigo-200 flex items-center justify-end">
+      <div className="h-12 py-3 px-2 border border-indigo-200 flex items-center justify-end">
         <div className="mr-2">
           <Link href="https://github.com/wheatandcat/atomic-design-checklist">
             <div className="hover:bg-blue-200 rounded-full px-2 py-1 cursor-pointer">
