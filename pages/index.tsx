@@ -15,6 +15,8 @@ import Icon from "@components/atoms/Icon";
 import Box from "@components/atoms/Box";
 import Chip from "@components/atoms/Chip";
 import Toggle from "@components/atoms/Toggle";
+import Like from "@components/atoms/Like";
+import LinkText from "@components/atoms/Link";
 import ButtonGroup from "@components/molecules/ButtonGroup";
 import Banners from "@components/molecules/Banners";
 import Accordion from "@components/molecules/Accordion";
@@ -35,6 +37,7 @@ import Modal from "@components/molecules/Modal";
 import ButtonAndModal from "@components/organisms/ButtonAndModal";
 import ListItem from "@components/molecules/ListItem";
 import Tabs from "@components/molecules/Tabs";
+import LikeText from "@components/molecules/LikeText";
 import CheckboxList from "@components/organisms/CheckboxList";
 import DateTimePicker from "@components/organisms/DateTimePicker";
 import Form from "@components/organisms/Form";
@@ -42,6 +45,8 @@ import OverflowMenu from "@components/organisms/Menu";
 import TabItems from "@components/organisms/TabItems";
 import Cards from "@components/organisms/Cards";
 import AppBar from "@components/organisms/Appbar";
+import SNS from "@components/organisms/SNS";
+import SocialButtons from "@components/organisms/SocialButtons";
 
 type Items = {
   atoms: Item[];
@@ -104,6 +109,14 @@ const items: Items = {
     {
       component: Chip,
       name: "Chip",
+    },
+    {
+      component: Like,
+      name: "Like",
+    },
+    {
+      component: LinkText,
+      name: "Link",
     },
   ],
   molecules: [
@@ -170,7 +183,7 @@ const items: Items = {
     {
       component: Pagination,
       name: "Pagination",
-      use: ["Simple Button"],
+      use: ["Simple Button", "Link"],
     },
     {
       component: Table,
@@ -201,6 +214,11 @@ const items: Items = {
       component: Tabs,
       name: "Tabs",
       use: ["Simple Button", "Divider"],
+    },
+    {
+      component: LikeText,
+      name: "Like & Count",
+      use: ["Like", "Text"],
     },
   ],
   organisms: [
@@ -243,6 +261,16 @@ const items: Items = {
       component: AppBar,
       name: "App bar",
       use: ["Search bar", "Text", "Simple Button"],
+    },
+    {
+      component: SNS,
+      name: "Social Button",
+      use: ["Simple Button", "Icon", "Modal"],
+    },
+    {
+      component: SocialButtons,
+      name: "Social Button List",
+      use: ["Social Button"],
     },
   ],
 };
