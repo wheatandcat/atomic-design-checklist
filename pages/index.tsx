@@ -142,8 +142,8 @@ const items: Items = {
     },
     {
       component: RadioButtonAndLabel,
-      name: "RadioButton & Label",
-      use: ["Text", "RadioButton"],
+      name: "Radio Button & Label",
+      use: ["Text", "Radio Button"],
     },
     {
       component: SearchBar,
