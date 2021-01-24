@@ -100,7 +100,7 @@ const Constraint = () => {
               <div className="grid grid-cols-3 px-3 py-2">
                 <div className="text-lg">Atoms</div>
                 <div className="text-lg text-gray-400">-</div>
-                <div className="text-lg ">0</div>
+                <div className="text-lg ">依存なし</div>
               </div>
               <div className="grid grid-cols-3 px-3 py-2">
                 <div className="text-lg">Molecules</div>
@@ -113,9 +113,14 @@ const Constraint = () => {
                 <div className="text-lg ">いくつでも</div>
               </div>
               <div className="grid grid-cols-3 px-3 py-2">
-                <div className="text-lg">Templates / Pages</div>
+                <div className="text-lg">Templates</div>
                 <div className="text-lg">Organisms</div>
                 <div className="text-lg ">いくつでも</div>
+              </div>
+              <div className="grid grid-cols-3 px-3 py-2">
+                <div className="text-lg">Pages</div>
+                <div className="text-lg">Templates</div>
+                <div className="text-lg ">1つ</div>
               </div>
             </div>
           </div>
