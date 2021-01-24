@@ -307,6 +307,18 @@ const Index = () => {
       <Head>
         <title>Atomic Design Check List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Atomic Design Check List" />
+        <meta property="og:title" content="Atomic Design Check List" />
+        <meta property="og:site_name" content="Atomic Design Check List" />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/peperomia-196da.appspot.com/o/atomic%2Fatomic_thumbnail.png?alt=media&token=a34e964f-3358-402f-912e-db45f077af8c"
+        />
+        <meta
+          property="og:url"
+          content="https://atomic-design-checklist.vercel.app/"
+        />
       </Head>
       <div className="h-12 py-3 px-2 border border-indigo-200 flex items-center justify-end">
         <div className="mr-2">
