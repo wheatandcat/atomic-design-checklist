@@ -47,6 +47,7 @@ import Cards from "@components/organisms/Cards";
 import AppBar from "@components/organisms/Appbar";
 import SNS from "@components/organisms/SNS";
 import SocialButtons from "@components/organisms/SocialButtons";
+import ProfileCard from "@components/organisms/ProfileCard";
 
 type Items = {
   atoms: Item[];
@@ -271,6 +272,11 @@ const items: Items = {
       component: SocialButtons,
       name: "Social Button List",
       use: ["Social Button"],
+    },
+    {
+      component: ProfileCard,
+      name: "Profile Card",
+      use: ["Card", "Image"],
     },
   ],
 };
